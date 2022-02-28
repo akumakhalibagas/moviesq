@@ -1,0 +1,48 @@
+extends ../layout/base
+block content
+    section.content-header
+
+    section.content
+        .box
+            .box-header.with-border
+                h3.box-title
+                    | MoviesQ
+                .box-tools.pull-right
+                    button(type='button', data-widget='collapse', data-toggle='tooltip',title='collapse').btn.btn-box-tool
+                        i.fa.fa-minus
+
+            .box-body
+                form(role='form',method='post' action='/moviesq/add')
+                    .row
+                        .col-xs-6
+                            .box-body
+                                - if (messages.msg_error)
+                                    .alert.alert-danger.alert-dismissable
+                                        button.close(type='button', data-dismiss='alert', aria-hidden='true')
+                                            | ×
+                                        h4
+                                            i.icon.fa.fa-ban
+                                            | Alert!
+                                        | !{messages.msg_error}
+                                .form-group
+                                    label
+                                        | Nama
+                                    input(type='text',value='#{nama}',name='nama',placeholder='Nama', autofocus).form-control
+                                .form-group
+                                    label
+                                        | Rilis
+                                    input(type='text',name='rilis',placeholder='Rilis').form-control
+                                .form-group
+                                    label
+                                        | Rating
+                                    input(type='text',value='#{rating}',name='rating',placeholder='Rating').form-control
+                                .form-group
+                                    label
+                                        | Ditonton
+                                    input(type='text',name='ditonton',placeholder='Ya/Tidak').form-control
+                            .box-footer
+                                button(type='submit').btn.btn-primary
+                                    | Submit
+
+                                a(href='/moviesq').btn.btn-primary.pull-right
+                                    | Back
